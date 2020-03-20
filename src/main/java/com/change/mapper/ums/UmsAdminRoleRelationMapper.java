@@ -1,7 +1,7 @@
 package com.change.mapper.ums;
 
-import com.change.model.UmsAdminRoleRelation;
-import com.change.model.UmsAdminRoleRelationExample;
+import com.change.model.ums.UmsAdminRoleRelation;
+import com.change.model.ums.UmsAdminRoleRelationExample;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

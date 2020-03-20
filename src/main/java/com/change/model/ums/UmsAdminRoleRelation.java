@@ -1,4 +1,4 @@
-package com.change.model;
+package com.change.model.ums;
 
 import java.io.Serializable;
 

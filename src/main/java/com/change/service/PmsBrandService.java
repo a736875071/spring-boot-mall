@@ -1,7 +1,7 @@
 package com.change.service;
 
 
-import com.change.model.PmsBrand;
+import com.change.model.pms.PmsBrand;
 
 import java.util.List;
 

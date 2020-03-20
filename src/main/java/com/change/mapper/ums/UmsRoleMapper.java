@@ -1,31 +1,54 @@
 package com.change.mapper.ums;
 
-import com.change.model.UmsRole;
-import com.change.model.UmsRoleExample;
-import org.apache.ibatis.annotations.Param;
+import com.change.model.ums.UmsRole;
+import com.change.model.ums.UmsRoleCondition;
 
 import java.util.List;
 
+/**
+ * @author change
+ */
 public interface UmsRoleMapper {
-    int countByExample(UmsRoleExample example);
 
-    int deleteByExample(UmsRoleExample example);
-
+    /**
+     * 删除角色
+     *
+     * @param id
+     * @return
+     */
     int deleteByPrimaryKey(Long id);
 
-    int insert(UmsRole record);
 
+    /**
+     * 新增角色
+     *
+     * @param record
+     * @return
+     */
     int insertSelective(UmsRole record);
 
-    List<UmsRole> selectByExample(UmsRoleExample example);
+    /**
+     * 条件查询角色
+     *
+     * @param condition
+     * @return
+     */
+    List<UmsRole> selectByExample(UmsRoleCondition condition);
 
+    /**
+     * 主键查询角色
+     *
+     * @param id
+     * @return
+     */
     UmsRole selectByPrimaryKey(Long id);
 
-    int updateByExampleSelective(@Param("record") UmsRole record, @Param("example") UmsRoleExample example);
-
-    int updateByExample(@Param("record") UmsRole record, @Param("example") UmsRoleExample example);
-
+    /**
+     * 新增角色
+     *
+     * @param record
+     * @return
+     */
     int updateByPrimaryKeySelective(UmsRole record);
 
-    int updateByPrimaryKey(UmsRole record);
 }

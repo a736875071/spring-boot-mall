@@ -1,4 +1,4 @@
-package com.change.model;
+package com.change.model.ums;
 
 import java.util.ArrayList;
 import java.util.List;

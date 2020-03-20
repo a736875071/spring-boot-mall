@@ -1,7 +1,7 @@
 package com.change.mapper.ums;
 
-import com.change.model.UmsAdmin;
-import com.change.model.UmsAdminExample;
+import com.change.model.ums.UmsAdmin;
+import com.change.model.ums.UmsAdminExample;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

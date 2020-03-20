@@ -1,7 +1,7 @@
 package com.change.mapper.pms;
 
-import com.change.model.PmsBrand;
-import com.change.model.PmsBrandExample;
+import com.change.model.pms.PmsBrand;
+import com.change.model.pms.PmsBrandExample;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

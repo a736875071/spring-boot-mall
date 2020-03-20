@@ -2,8 +2,8 @@ package com.change.controller.umsmember;
 
 import com.change.common.api.CommonResult;
 import com.change.dto.UmsAdminLoginParam;
-import com.change.model.UmsAdmin;
-import com.change.model.UmsPermission;
+import com.change.model.ums.UmsAdmin;
+import com.change.model.ums.UmsPermission;
 import com.change.service.UmsAdminService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

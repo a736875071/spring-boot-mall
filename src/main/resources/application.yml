@@ -1,6 +1,11 @@
 server:
   port: 8011
 spring:
+  jackson:
+    date-format: yyyy-MM-dd #如果使用字符串表示，用这行设置格式
+    timezone: GMT+8
+    serialization:
+      write-dates-as-timestamps: false #使用时间戳，使用数值timestamp表示日期
   datasource:
     url: jdbc:mysql://localhost:3306/mall?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
     username: root
@@ -23,7 +28,6 @@ spring:
         enabled: true
       cluster-nodes: 127.0.0.1:9300 # es的连接地址及端口号
       cluster-name: elasticsearch # es集群的名称
-
   # 自定义redis key
 redis:
   key:
@@ -37,5 +41,9 @@ jwt:
   secret: mySecret #JWT加解密使用的密钥
   expiration: 604800 #JWT的超期限时间(60*60*24)
 #  tokenHead: Bearer  #JWT负载中拿到开头
+logging:
+  level:
+    com:
+      change: debug
 
 

@@ -1,13 +1,15 @@
-package com.change.model;
+package com.change.model.ums;
 
 import java.io.Serializable;
 
-public class UmsRolePermissionRelation implements Serializable {
+public class UmsAdminPermissionRelation implements Serializable {
     private Long id;
 
-    private Long roleId;
+    private Long adminId;
 
     private Long permissionId;
+
+    private Integer type;
 
     private static final long serialVersionUID = 1L;
 
@@ -19,12 +21,12 @@ public class UmsRolePermissionRelation implements Serializable {
         this.id = id;
     }
 
-    public Long getRoleId() {
-        return roleId;
+    public Long getAdminId() {
+        return adminId;
     }
 
-    public void setRoleId(Long roleId) {
-        this.roleId = roleId;
+    public void setAdminId(Long adminId) {
+        this.adminId = adminId;
     }
 
     public Long getPermissionId() {
@@ -35,6 +37,14 @@ public class UmsRolePermissionRelation implements Serializable {
         this.permissionId = permissionId;
     }
 
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -42,8 +52,9 @@ public class UmsRolePermissionRelation implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
-        sb.append(", roleId=").append(roleId);
+        sb.append(", adminId=").append(adminId);
         sb.append(", permissionId=").append(permissionId);
+        sb.append(", type=").append(type);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

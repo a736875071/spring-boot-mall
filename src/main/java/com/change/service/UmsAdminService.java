@@ -1,8 +1,8 @@
 package com.change.service;
 
 
-import com.change.model.UmsAdmin;
-import com.change.model.UmsPermission;
+import com.change.model.ums.UmsAdmin;
+import com.change.model.ums.UmsPermission;
 
 import java.util.List;
 

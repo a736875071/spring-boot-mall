@@ -2,7 +2,7 @@ package com.change.controller.brand;
 
 import com.change.common.api.CommonPage;
 import com.change.common.api.CommonResult;
-import com.change.model.PmsBrand;
+import com.change.model.pms.PmsBrand;
 import com.change.service.PmsBrandService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

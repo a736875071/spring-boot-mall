@@ -1,8 +1,8 @@
 package com.change.service.impl;
 
 import com.change.mapper.pms.PmsBrandMapper;
-import com.change.model.PmsBrand;
-import com.change.model.PmsBrandExample;
+import com.change.model.pms.PmsBrand;
+import com.change.model.pms.PmsBrandExample;
 import com.change.service.PmsBrandService;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;

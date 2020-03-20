@@ -1,7 +1,7 @@
 package com.change.config.security;
 
-import com.change.model.UmsAdmin;
-import com.change.model.UmsPermission;
+import com.change.model.ums.UmsAdmin;
+import com.change.model.ums.UmsPermission;
 import com.change.service.UmsAdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

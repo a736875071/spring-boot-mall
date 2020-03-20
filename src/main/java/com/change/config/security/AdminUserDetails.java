@@ -1,8 +1,8 @@
 package com.change.config.security;
 
 
-import com.change.model.UmsAdmin;
-import com.change.model.UmsPermission;
+import com.change.model.ums.UmsAdmin;
+import com.change.model.ums.UmsPermission;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

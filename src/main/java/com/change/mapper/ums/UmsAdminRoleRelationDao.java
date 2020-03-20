@@ -1,7 +1,7 @@
 package com.change.mapper.ums;
 
 
-import com.change.model.UmsPermission;
+import com.change.model.ums.UmsPermission;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
