@@ -75,6 +75,11 @@ public class UmsAdminServiceImpl implements UmsAdminService {
     }
 
     @Override
+    public UmsAdmin selectByPrimaryKey(Long id) {
+        return adminMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
     public String login(String username, String password) {
         String token = null;
         try {

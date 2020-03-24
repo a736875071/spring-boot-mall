@@ -8,18 +8,32 @@ import java.util.List;
 
 /**
  * 后台管理员Service
- * Created by macro on 2018/4/26.
+ *
+ * @author macro
+ * @date 2018/4/26
  */
 public interface UmsAdminService {
     /**
      * 根据用户名获取后台管理员
+     *
+     * @param username
      */
     UmsAdmin getAdminByUsername(String username);
 
     /**
      * 注册功能
+     *
+     * @param umsAdminParam
      */
     UmsAdmin register(UmsAdmin umsAdminParam);
+
+    /**
+     * 主键查询用户是否存在
+     *
+     * @param id 主键
+     * @return 结果
+     */
+    UmsAdmin selectByPrimaryKey(Long id);
 
     /**
      * 登录功能
