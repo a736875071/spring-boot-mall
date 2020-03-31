@@ -1,12 +1,12 @@
 package com.change.service.impl;
 
 import com.change.config.exception.MsgException;
-import com.change.dto.UmsAdminRoleParam;
+import com.change.dto.*;
 import com.change.mapper.ums.UmsAdminRoleRelationMapper;
+import com.change.mapper.ums.UmsRoleMenuRelationMapper;
 import com.change.model.ums.UmsAdmin;
 import com.change.model.ums.UmsAdminRoleRelation;
 import com.change.model.ums.UmsRole;
-import com.change.model.ums.UmsRoleCondition;
 import com.change.service.UmsAdminRoleService;
 import com.change.service.UmsAdminService;
 import com.change.service.UmsRoleService;
@@ -23,13 +23,15 @@ import java.util.List;
  */
 @Service
 public class UmsAdminRoleServiceImpl implements UmsAdminRoleService {
-    private static int ERROR_CODE = 1001;
+    private final static int ERROR_CODE = 1001;
     @Autowired
     private UmsAdminService umsAdminService;
     @Autowired
     private UmsRoleService umsRoleService;
     @Autowired
     private UmsAdminRoleRelationMapper umsAdminRoleRelationMapper;
+    @Autowired
+    private UmsRoleMenuRelationMapper umsrolemenurelationmapper;
 
     @Override
     @Transactional(rollbackFor = Exception.class)
@@ -71,5 +73,75 @@ public class UmsAdminRoleServiceImpl implements UmsAdminRoleService {
     @Override
     public List<UmsAdminRoleRelation> findAdminRoleByAdminId(Long adminId) {
         return umsAdminRoleRelationMapper.findAdminRoleByAdminId(adminId);
+    }
+
+    @Override
+    public AdminRoleMenuDto findRoleAndMenuByAdminId(Long adminId) {
+        //查询用户角色
+        List<RoleDto> roleDtos = umsAdminRoleRelationMapper.getRoleByAdminId(adminId);
+        //查询角色对应的菜单
+        List<UmsMenuDto> relations = umsrolemenurelationmapper.getRoleMenuByAdminId(adminId);
+
+        return new AdminRoleMenuDto(roleDtos, relations);
+    }
+
+    @Override
+    public AdminRoleMenuTreeDto findRoleAndMenuTreeByAdminId(Long adminId) {
+        //查询用户角色
+        List<RoleDto> roleDtos = umsAdminRoleRelationMapper.getRoleByAdminId(adminId);
+        //查询角色对应的菜单
+        List<UmsMenuDto> relations = umsrolemenurelationmapper.getRoleMenuByAdminId(adminId);
+
+        return new AdminRoleMenuTreeDto(roleDtos, findTree(relations));
+    }
+
+
+    private List<UmsMenuDto> findTree(List<UmsMenuDto> allMenu) {
+        try {//查询所有菜单
+            //根节点
+            List<UmsMenuDto> rootMenu = new ArrayList<>();
+            for (UmsMenuDto nav : allMenu) {
+                //父节点是0的，为根节点。
+                if (nav.getParentId() == 0) {
+                    rootMenu.add(nav);
+                }
+            }
+            for (UmsMenuDto nav : rootMenu) {
+                /* 获取根节点下的所有子节点 使用getChild方法*/
+                List<UmsMenuDto> childList = getChild(nav.getId(), allMenu);
+                //给根节点设置子节点
+                nav.setChildren(childList);
+            }
+            return rootMenu;
+        } catch (Exception e) {
+            throw new MsgException(ERROR_CODE, "菜单查询异常");
+        }
+    }
+
+    /**
+     * 获取子节点
+     *
+     * @param id      父节点id
+     * @param allMenu 所有菜单列表
+     * @return 每个根节点下，所有子菜单列表
+     */
+    private List<UmsMenuDto> getChild(Long id, List<UmsMenuDto> allMenu) {
+        //子菜单
+        List<UmsMenuDto> childList = new ArrayList<>();
+        for (UmsMenuDto nav : allMenu) {
+            //相等说明：为该根节点的子节点。
+            if (nav.getParentId().equals(id)) {
+                childList.add(nav);
+            }
+        }
+        //递归
+        for (UmsMenuDto nav : childList) {
+            nav.setChildren(getChild(nav.getId(), allMenu));
+        }
+        //如果节点下没有子节点，返回一个空List（递归退出）
+        if (childList.size() == 0) {
+            return new ArrayList<>();
+        }
+        return childList;
     }
 }

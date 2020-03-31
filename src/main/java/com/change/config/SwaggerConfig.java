@@ -47,7 +47,7 @@ public class SwaggerConfig extends WebMvcConfigurerAdapter {
             .pathMapping("/")
             .groupName("会员登录注册管理")
             .select()
-            .apis(RequestHandlerSelectors.basePackage("com.change.controller.umsmember"))
+            .apis(RequestHandlerSelectors.basePackage("com.change.controller.ums"))
             .build()
             .apiInfo(productApiInfo());
     }

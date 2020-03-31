@@ -2,7 +2,7 @@ package com.change.service.impl;
 
 import com.change.common.utils.JwtTokenUtil;
 import com.change.mapper.ums.UmsAdminMapper;
-import com.change.mapper.ums.UmsAdminRoleRelationDao;
+import com.change.mapper.ums.UmsAdminRoleRelationMapper;
 import com.change.model.ums.UmsAdmin;
 import com.change.model.ums.UmsAdminExample;
 import com.change.model.ums.UmsPermission;
@@ -41,7 +41,7 @@ public class UmsAdminServiceImpl implements UmsAdminService {
     @Autowired
     private UmsAdminMapper adminMapper;
     @Autowired
-    private UmsAdminRoleRelationDao adminRoleRelationDao;
+    private UmsAdminRoleRelationMapper adminRoleRelationMapper;
 
     @Override
     public UmsAdmin getAdminByUsername(String username) {
@@ -99,6 +99,6 @@ public class UmsAdminServiceImpl implements UmsAdminService {
 
     @Override
     public List<UmsPermission> getPermissionList(Long adminId) {
-        return adminRoleRelationDao.getPermissionList(adminId);
+        return adminRoleRelationMapper.getPermissionList(adminId);
     }
 }

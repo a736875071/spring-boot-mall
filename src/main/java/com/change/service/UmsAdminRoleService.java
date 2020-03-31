@@ -1,5 +1,7 @@
 package com.change.service;
 
+import com.change.dto.AdminRoleMenuDto;
+import com.change.dto.AdminRoleMenuTreeDto;
 import com.change.dto.UmsAdminRoleParam;
 import com.change.model.ums.UmsAdminRoleRelation;
 
@@ -24,4 +26,20 @@ public interface UmsAdminRoleService {
      * @return 结果
      */
     List<UmsAdminRoleRelation> findAdminRoleByAdminId(Long adminId);
+
+    /**
+     * 查询用户的角色及资源
+     *
+     * @param adminId 用户id
+     * @return 结果
+     */
+    AdminRoleMenuDto findRoleAndMenuByAdminId(Long adminId);
+
+    /**
+     * 查询用户的角色及资源(菜单树形结构)
+     *
+     * @param adminId 用户id
+     * @return 结果
+     */
+    AdminRoleMenuTreeDto findRoleAndMenuTreeByAdminId(Long adminId);
 }

@@ -146,10 +146,50 @@
             <include refid="Example_Where_Clause"/>
         </if>
     </select>
-  <select id="findAdminRoleByAdminId" resultType="com.change.model.ums.UmsAdminRoleRelation">
+    <select id="findAdminRoleByAdminId" resultType="com.change.model.ums.UmsAdminRoleRelation">
     select *  from  ums_admin_role_relation where  admin_id=#{adminId}
   </select>
-  <update id="updateByExampleSelective" parameterType="map">
+    <select id="getPermissionList" resultType="com.change.model.ums.UmsPermission">
+        SELECT
+            p.*
+        FROM
+            ums_admin_role_relation ar
+            LEFT JOIN ums_role r ON ar.role_id = r.id
+            LEFT JOIN ums_role_permission_relation rp ON r.id = rp.role_id
+            LEFT JOIN ums_permission p ON rp.permission_id = p.id
+        WHERE
+            ar.admin_id = #{adminId}
+            AND p.id IS NOT NULL
+            AND p.id NOT IN (
+                SELECT
+                    p.id
+                FROM
+                    ums_admin_permission_relation pr
+                    LEFT JOIN ums_permission p ON pr.permission_id = p.id
+                WHERE
+                    pr.type = - 1
+                    AND pr.admin_id = #{adminId}
+            )
+        UNION
+        SELECT
+            p.*
+        FROM
+            ums_admin_permission_relation pr
+            LEFT JOIN ums_permission p ON pr.permission_id = p.id
+        WHERE
+            pr.type = 1
+            AND pr.admin_id = #{adminId}
+    </select>
+    <select id="getRoleByAdminId" resultType="com.change.dto.RoleDto">
+        SELECT DISTINCT
+            ur.id,
+            ur.`name`
+        FROM
+            ums_admin_role_relation uarr
+            LEFT JOIN ums_role ur ON uarr.role_id = ur.id
+        where uarr.admin_id=#{adminId}
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
         update ums_admin_role_relation
         <set>
             <if test="record.id != null">

@@ -43,7 +43,7 @@
     <sql id="Base_Column_List">
     id, name, description, admin_count, create_time, status, sort
   </sql>
-    <select id="selectByExample" parameterType="com.change.model.ums.UmsRoleCondition" resultMap="BaseResultMap">
+    <select id="selectByExample" parameterType="com.change.dto.UmsRoleCondition" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
         from ums_role

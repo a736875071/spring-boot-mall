@@ -1,4 +1,4 @@
-package com.change.model.ums;
+package com.change.dto;
 
 import lombok.Data;
 
@@ -8,8 +8,7 @@ import java.util.List;
  * @author change
  */
 @Data
-public class UmsRoleCondition {
-    private String name;
+public class UmsMenuCondition {
     private List<Long> ids;
 
 }

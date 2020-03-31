@@ -1,4 +1,4 @@
-package com.change.controller.umsmember;
+package com.change.controller.ums;
 
 import com.change.common.api.CommonResult;
 import com.change.dto.UmsAdminLoginParam;

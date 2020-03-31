@@ -1,8 +1,8 @@
-package com.change.controller.umsmember;
+package com.change.controller.ums;
 
 import com.change.common.api.CommonResult;
 import com.change.model.ums.UmsRole;
-import com.change.model.ums.UmsRoleCondition;
+import com.change.dto.UmsRoleCondition;
 import com.change.service.UmsRoleService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

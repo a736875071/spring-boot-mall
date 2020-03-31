@@ -2,7 +2,7 @@ package com.change.service.impl;
 
 import com.change.mapper.ums.UmsRoleMapper;
 import com.change.model.ums.UmsRole;
-import com.change.model.ums.UmsRoleCondition;
+import com.change.dto.UmsRoleCondition;
 import com.change.service.UmsRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,6 +1,8 @@
-package com.change.controller.umsmember;
+package com.change.controller.ums;
 
 import com.change.common.api.CommonResult;
+import com.change.dto.AdminRoleMenuDto;
+import com.change.dto.AdminRoleMenuTreeDto;
 import com.change.dto.UmsAdminRoleParam;
 import com.change.model.ums.UmsAdminRoleRelation;
 import com.change.service.UmsAdminRoleService;
@@ -36,5 +38,17 @@ public class UmsAdminRoleController {
     @RequestMapping(value = "/admin-roles/find/{adminId}", method = RequestMethod.GET)
     public CommonResult<List<UmsAdminRoleRelation>> findAdminRoleByAdminId(@PathVariable Long adminId) {
         return CommonResult.success(umsAdminRoleService.findAdminRoleByAdminId(adminId));
+    }
+
+    @ApiOperation("查看用户角色及菜单")
+    @RequestMapping(value = "/admin-roles/menu/{adminId}", method = RequestMethod.GET)
+    public CommonResult<AdminRoleMenuDto> findRoleAndMenuByAdminId(@PathVariable Long adminId) {
+        return CommonResult.success(umsAdminRoleService.findRoleAndMenuByAdminId(adminId));
+    }
+
+    @ApiOperation("查看用户角色及菜单(菜单树型)")
+    @RequestMapping(value = "/admin-roles/menu-tree/{adminId}", method = RequestMethod.GET)
+    public CommonResult<AdminRoleMenuTreeDto> findRoleAndMenuTreeByAdminId(@PathVariable Long adminId) {
+        return CommonResult.success(umsAdminRoleService.findRoleAndMenuTreeByAdminId(adminId));
     }
 }

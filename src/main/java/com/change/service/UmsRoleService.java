@@ -1,7 +1,7 @@
 package com.change.service;
 
 import com.change.model.ums.UmsRole;
-import com.change.model.ums.UmsRoleCondition;
+import com.change.dto.UmsRoleCondition;
 
 import java.util.List;
 

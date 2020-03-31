@@ -1,7 +1,9 @@
 package com.change.mapper.ums;
 
+import com.change.dto.RoleDto;
 import com.change.model.ums.UmsAdminRoleRelation;
 import com.change.model.ums.UmsAdminRoleRelationExample;
+import com.change.model.ums.UmsPermission;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -34,6 +36,18 @@ public interface UmsAdminRoleRelationMapper {
      */
     List<UmsAdminRoleRelation> findAdminRoleByAdminId(Long adminId);
 
+    /**
+     * 获取用户所有权限(包括+-权限)
+     */
+    List<UmsPermission> getPermissionList(@Param("adminId") Long adminId);
+
+    /**
+     * 查询用户对应的角色
+     *
+     * @param adminId 用户id
+     * @return 结果
+     */
+    List<RoleDto> getRoleByAdminId(Long adminId);
 
     int countByExample(UmsAdminRoleRelationExample example);
 
